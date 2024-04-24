@@ -52,3 +52,31 @@ fn get_game_result<'a>(player_move: &'a str, computer_move: &'a str) -> &'a str 
         "Computer wins!"
     }
 }
+
+
+#[cfg(test)]
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_is_valid_move() {
+        assert_eq!(is_valid_move("rock"), true);
+        assert_eq!(is_valid_move("paper"), true);
+        assert_eq!(is_valid_move("scissors"), true);
+        assert_eq!(is_valid_move("invalid"), false);
+    }
+
+    #[test]
+    fn test_get_game_result() {
+        assert_eq!(get_game_result("rock", "rock"), "It's a tie!");
+        assert_eq!(get_game_result("rock", "paper"), "Computer wins!");
+        assert_eq!(get_game_result("rock", "scissors"), "You win!");
+        assert_eq!(get_game_result("paper", "rock"), "You win!");
+        assert_eq!(get_game_result("paper", "paper"), "It's a tie!");
+        assert_eq!(get_game_result("paper", "scissors"), "Computer wins!");
+        assert_eq!(get_game_result("scissors", "rock"), "Computer wins!");
+        assert_eq!(get_game_result("scissors", "paper"), "You win!");
+        assert_eq!(get_game_result("scissors", "scissors"), "It's a tie!");
+    }
+}
