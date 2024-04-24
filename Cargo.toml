@@ -1,0 +1,11 @@
+[package]
+name = "rustgame"
+version = "0.1.0"
+edition = "2018"
+
+[[bin]]
+name = "rustgame"
+path = "game.rs"
+
+[dependencies]
+rand = "0.8.4"
