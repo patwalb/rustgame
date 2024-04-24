@@ -1,11 +1,11 @@
 [package]
-name = "rustgame"
+name = "game_rockPaperScissors"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [[bin]]
 name = "rustgame"
-path = "game.rs"
+path = "game_rockPaperScissors.rs"
 
 [dependencies]
 rand = "0.8.4"
