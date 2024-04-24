@@ -1,28 +1,37 @@
 extern crate rand;
 use std::io;
 
-
 fn main() {
-    println!("Rock, Paper, Scissors");
-
     loop {
-        println!("Please enter your move (rock, paper, or scissors):");
+        let player_move = get_player_move();
 
-        let mut player_move = String::new();
-        io::stdin().read_line(&mut player_move).expect("Failed to read line");
-
-        let player_move = player_move.trim().to_lowercase();
-
-        if player_move == "rock" || player_move == "paper" || player_move == "scissors" {
-            let computer_move = get_computer_move();
-            println!("Computer's move: {}", computer_move);
-
-            let result = get_game_result(&player_move, &computer_move);
-            println!("Result: {}", result);
+        if is_valid_move(&player_move) {
+            play_round(&player_move);
         } else {
-            println!("Invalid move. Please try again.");
+            println!("Invalid move. Please enter rock, paper, or scissors.");
         }
     }
+}
+
+fn get_player_move() -> String {
+    println!("Please enter your move (rock, paper, or scissors):");
+
+    let mut player_move = String::new();
+    io::stdin().read_line(&mut player_move).expect("Failed to read line");
+
+    player_move.trim().to_lowercase()
+}
+
+fn is_valid_move(player_move: &str) -> bool {
+    player_move == "rock" || player_move == "paper" || player_move == "scissors"
+}
+
+fn play_round(player_move: &str) {
+    let computer_move = get_computer_move();
+    println!("Computer's move: {}", computer_move);
+
+    let result = get_game_result(player_move, &computer_move);
+    println!("Result: {}", result);
 }
 
 fn get_computer_move() -> String {
